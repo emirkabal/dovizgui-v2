@@ -49,7 +49,7 @@ function getIP(req) {
     var IP = 'localhost';
 
     if (forwardedIpsStr) {
-        IP = forwardedIps = forwardedIpsStr.split(',')[0];
+        IP = forwardedIpsStr = forwardedIpsStr.split(',')[0];
     }
     return IP;
 }

@@ -1,7 +1,7 @@
 var app;
 
 function loadApp() {
-    app = setTimeout(showPage, 2000);
+    app = setTimeout(showPage, 2500);
 }
 
 function showPage() {
