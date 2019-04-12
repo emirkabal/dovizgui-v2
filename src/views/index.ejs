@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="icon" type="image/png" href="public/images/icon.png"/>
+    <title>DovizGUI v2</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="public/css/main.css"/>
+    <link rel="stylesheet" href="public/css/loader.css"/>
+
+</head>
+
+<body>
+    <!-- loader -->
+    <body onload="loadApp()" style="margin:0;"></body>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!-- loader end -->
+
+
+    <!-- app -->
+    <div style="display: none;" id="dovizApp">
+
+        <div class="content-md container">
+            <a href="/"><img class="center-image" src="public/images/icon.png" alt="DovizGUI v2.0"/></a>
+            <h1 class="text-center">DovizGUI v2</h1>
+            <br>
+            <br>
+            <p class="text-center">Toplam olarak <%= data.kurlar.length - 1%> döviz kuru listelendi.<br>
+                Güncellenme tarihi: <%= data.tarih %></p>
+
+            <div class="row">
+                <% data.kurlar.map(data => { -%>
+                    <%if(data.kod == "QAR") return;%>
+                    <div class="col-md-4 md-margin-b-30">
+                    
+                        <div class="pricing-list-v4 radius-10">
+                    
+                            <div class="pricing-list-v4-header">
+                                <h4 class="pricing-list-v3-title"><%= data.isim %></h4>
+                                <span class="pricing-list-v2-subtitle"><%= data.kod %></span>
+                            </div>
+                    
+                            <div class="pricing-list-v4-content">
+                                <div class="margin-b-40">
+                                    <span class="pricing-list-v4-price-sign"><i class="fa fa-dollar"></i></span>
+                                    <span class="pricing-list-v4-price"><%= Number(data.satis).toFixed(2) %></span>
+                                    <span class="pricing-list-v4-subprice">₺</span>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    
+                    </div>
+                    
+                
+                <% }); -%>
+                
+               
+            </div>
+
+            <br>
+            
+            <p class="text-center"><a href="list">Ücretsiz API</a></p>
+            <h4 class="text-center">Copyright @ 2019 Tüm hakları saklıdır.</h4>
+
+
+        </div>
+
+
+    </div>
+    <!-- app end-->
+
+
+
+
+
+
+
+    <!-- loader -->
+    <script src="public/js/main.js"></script> 
+    <!-- loader end -->
+</body>
+
+
+
+<!-- atakan bir otobüstür. -->
+</html>

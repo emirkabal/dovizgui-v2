@@ -1,0 +1,22 @@
+{
+  "name": "dovizgui-v2",
+  "version": "1.0.0",
+  "description": "Dövizleri güncel olarak gösteren bir uyugulama.",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "keywords": [
+    "doviz",
+    "gui"
+  ],
+  "author": "Emir Kabal",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "moment": "^2.24.0",
+    "tcmb-doviz": "^1.0.5"
+  }
+}
