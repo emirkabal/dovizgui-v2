@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <link rel="icon" type="image/png" href="images/icon.png"/>
+    <title>DovizGUI v2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/loader.css"/>
+
+</head>
+
+<body>
+    <!-- loader -->
+    <body onload="loadApp()" style="margin:0;"></body>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+    <!-- loader end -->
+
+
+    <!-- app -->
+    <div style="display: none;" id="dovizApp">
+
+        <div class="content-md container">
+            <a href="#" onclick="update()"><img class="center-image" src="images/icon.png" alt="DovizGUI v2.0.1"/></a>
+            <h1 class="text-center">DovizGUI v2</h1>
+            <br>
+            <br>
+            <p class="text-center">Toplam olarak <a id="doviz_size">0</a> döviz kuru listelendi.</p>
+
+            <div id="items" class="row"></div>
+
+            <br>
+
+            <p class="text-center"><a href="/list">Ücretsiz API</a></p>
+            <h4 class="text-center">Copyright @ 2019 Tüm hakları <a href="https://emirkabal.com">Emir Kabal</a> adına saklıdır.</h4>
+
+
+        </div>
+
+
+    </div>
+    <!-- app end-->
+
+
+
+
+
+
+
+    <!-- loader -->
+    <script src="js/main.js"></script> 
+    <!-- loader end -->
+</body>
+
+</html>
