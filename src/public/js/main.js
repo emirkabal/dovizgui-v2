@@ -1,3 +1,25 @@
+//last update search box
+let animated = false;
+$(document).ready(function () {
+    $("#search_box").on("keyup", function () {
+        var val = $(this).val().replace(/İ/g, 'i').toLocaleLowerCase();
+        var matcher = new RegExp(val, 'gi');
+        $('.box').show().not(function () {
+            return matcher.test($(this).find('.name, .code').text().replace(/İ/g, 'i').toLocaleLowerCase());
+        }).hide();
+        if(animated != true && val != "") {
+            $('html').animate({
+                scrollTop: $("#items").offset().top
+            }, 1000);
+            animated = true;
+            setTimeout(() => {
+                animated = false;
+            }, 4000);
+        } 
+        $('#doviz_size').text($('#items .box').filter(':visible').length);
+    });
+});
+
 function loadApp() {
     update();
 }
@@ -13,13 +35,13 @@ function update() {
             var result = JSON.parse(res);
             result.forEach(e => {
                 let item = `
-                        <div id="${e.code}" class="col-md-4 md-margin-b-30">
+                        <div class="col-md-4 md-margin-b-30 box">
                     
                             <div class="pricing-list-v4 radius-10">
                         
                                 <div class="pricing-list-v4-header">
-                                    <h4 class="pricing-list-v3-title">${e.name}</h4>
-                                    <span class="pricing-list-v2-subtitle">${e.code}</span>
+                                    <h4 class="pricing-list-v3-title name">${e.name}</h4>
+                                    <span class="pricing-list-v2-subtitle code">${e.code}</span>
                                 </div>
                         
                                 <div class="pricing-list-v4-content">

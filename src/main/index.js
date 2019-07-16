@@ -39,11 +39,12 @@ app.listen(3000, () => {
 
 
 function list(a, b) {
-    if (["USD", "EUR", "GBP"].includes(b.code) || ["USD", "EUR", "GBP"].includes(a.code))
-        return -1;
+    let val = 0;
     if (a.sell > b.sell)
-        return -1;
+        val = -1;
     if (a.sell < b.sell)
-        return 1;
-    return 0;
+        val = 1;
+    if (["USD", "EUR", "GBP"].includes(b.code) || ["USD", "EUR", "GBP"].includes(a.code))
+        val = -1;
+    return val;
 }
