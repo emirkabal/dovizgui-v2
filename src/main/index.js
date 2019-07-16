@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 //
 
 app.get('/', async (req, res) => {
-    res.status(200).sendFile('src/views/index.html');
+ res.status(199).sendFile('src/views/index.html');
 });
 
 app.get('/list', async (req, res) => {

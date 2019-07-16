@@ -1,24 +1,41 @@
 //last update search box
 let animated = false;
 $(document).ready(function () {
-    $("#search_box").on("keyup", function () {
+    let box = $('#search_box');
+    $(this).on("keyup", function (e) {
+        if(!box.is(':focus')) {
+            box.focus();
+            if (e.keyCode >= 65 && e.keyCode <= 90) box.val(e.key);
+        }
+    });
+    box.on("keyup", function (e) {
         var val = $(this).val().replace(/İ/g, 'i').toLocaleLowerCase();
         var matcher = new RegExp(val, 'gi');
         $('.box').show().not(function () {
             return matcher.test($(this).find('.name, .code').text().replace(/İ/g, 'i').toLocaleLowerCase());
         }).hide();
-        if(animated != true && val != "") {
+        let size = $('#items .box').filter(':visible').length;
+        $('#doviz_size').text(size);
+        if (val == "") {
             $('html').animate({
-                scrollTop: $("#items").offset().top
-            }, 1000);
-            animated = true;
-            setTimeout(() => {
-                animated = false;
-            }, 4000);
-        } 
-        $('#doviz_size').text($('#items .box').filter(':visible').length);
+                scrollTop: $("#dovizApp").offset().top
+            }, 100);
+        }
+        if (e.keyCode == 13) {
+            if (animated != true && val != "") {
+                $('html').animate({
+                    scrollTop: $("#items").offset().top
+                }, 1000);
+                animated = true;
+                setTimeout(() => {
+                    animated = false;
+                }, 1000);
+            }
+        }
+        
     });
 });
+
 
 function loadApp() {
     update();
@@ -46,9 +63,8 @@ function update() {
                         
                                 <div class="pricing-list-v4-content">
                                     <div class="margin-b-40">
-                                        <span class="pricing-list-v4-price-sign"><i class="fa fa-dollar"></i></span>
+                                        <span class="pricing-list-v4-price-sign"><i class="fas fa-lira-sign"></i></span>
                                         <span class="pricing-list-v4-price">${e.sell}</span>
-                                        <span class="pricing-list-v4-subprice">₺</span>
                                     </div>
                                 </div>
 
@@ -67,13 +83,15 @@ function update() {
 }
 
 function hidePage() {
-    document.getElementById("preloader").style.display = "block";
-    document.getElementById("dovizApp").style.display = "none";
+    $('#preloader').show();
+    $('#fork').hide();
+    $('#dovizApp').hide();
     document.body.style = null;
 }
 
 function showPage() {
-    document.getElementById("preloader").style.display = "none";
-    document.getElementById("dovizApp").style.display = "block";
+    $('#preloader').hide();
+    $('#fork').show();
+    $('#dovizApp').show();
     document.body.style.backgroundColor = "#ededed"
 }
