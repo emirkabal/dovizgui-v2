@@ -13,7 +13,6 @@
   "author": "Emir Kabal",
   "license": "Apache-2.0",
   "dependencies": {
-    "axios": "^0.19.0",
     "chalk": "^2.4.2",
     "express": "^4.16.4",
     "moment": "^2.24.0"

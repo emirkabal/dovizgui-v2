@@ -44,27 +44,29 @@ function loadApp() {
 function update() {
     hidePage();
     $.ajax({
-        url: "/list",
+        type: "GET",
+        url: "https://doviz-request.herokuapp.com",
         success: (res) => {
+            // return console.log(res);
             let items = $('#items');
             let items_size_text = $('#doviz_size');
             items.empty();
-            var result = JSON.parse(res);
-            result.forEach(e => {
+            // var result = JSON.parse(res.a_doviz);
+            res.a_doviz.forEach(e => {
                 let item = `
                         <div class="col-md-4 md-margin-b-30 box">
                     
                             <div class="pricing-list-v4 radius-10">
                         
                                 <div class="pricing-list-v4-header">
-                                    <h4 class="pricing-list-v3-title name">${e.name}</h4>
-                                    <span class="pricing-list-v2-subtitle code">${e.code}</span>
+                                    <h4 class="pricing-list-v3-title name">${e.full_name}</h4>
+                                    <span class="pricing-list-v2-subtitle code">${e.short_code}</span>
                                 </div>
                         
                                 <div class="pricing-list-v4-content">
                                     <div class="margin-b-40">
                                         <span class="pricing-list-v4-price-sign"><i class="fas fa-lira-sign"></i></span>
-                                        <span class="pricing-list-v4-price">${e.sell}</span>
+                                        <span class="pricing-list-v4-price">${e.selling.toFixed(2)}</span>
                                     </div>
                                 </div>
 
@@ -73,7 +75,7 @@ function update() {
                         </div>`;
                 items.append(item);
             });
-            items_size_text.text(result.length);
+            items_size_text.text(res.a_doviz.length);
             showPage();
         },
         error: () => {
